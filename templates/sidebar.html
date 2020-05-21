@@ -1,0 +1,25 @@
+{%load static%}
+<aside class="col-lg-4">
+    <!-- Widget [Search Bar Widget]-->
+    <div class="widget search">
+        <header>
+            <h3 class="h6"><u>Look up a project</u></h3>
+        </header>
+        <form action="{% url 'search' %}" class="search-form">
+            <div class="form-group">
+                <input type="text" name="q" placeholder="Search..">
+                <button type="submit" class="submit"><i class="fas fa-search fa-xs"></i></button>
+            </div>
+        </form>
+    </div>
+    <div class="widget categories border">
+        <header>
+            <h3 class="h6 ml-1"><u>Categories</u></h3>
+        </header>
+        <div class="item d-flex justify-content-between">
+            {% for cat in category_count %}
+            <a class="ml-1" href="{% url 'search' %}?q={{cat.categories__name}}">{{cat.categories__name}}</a><span class="mr-1" >{{cat.categories__name__count}}</span>
+            {% endfor %}
+        </div>
+    </div>
+</aside>

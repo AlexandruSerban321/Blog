@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block content%}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{% static 'img/browse-bg.jpg' %)')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Browse</h1>
+          <span class="subheading">Looking for a specific project?.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <main class="posts-listing col-lg-8"> 
+      <div class="container">
+        <div class="row">
+          {% if post_list%}
+          {% for post in post_list %}
+          <div class="post col-xl-6 border mb-1">
+            <div class="post-details">
+              <center><a href="{% url 'post-detail' post.id %}">
+              <h3 class="h4">{{ post.title }}</h3></a>
+              <p class="text-muted">{{ post.description }}</p>
+              </center>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          <center><h3>No posts yet come back soon for some.</h3></center>
+          {% endif %}
+        </div>
+        {%include 'paginator.html'%}
+      </div>
+    </main>
+    {% include 'sidebar.html' %}
+  </div>
+</div>
+
+{% endblock %}  

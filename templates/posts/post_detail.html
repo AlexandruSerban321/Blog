@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{% static 'img/detail-bg.jpg' %)')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>{{post.title}}</h1>
+          <span class="subheading">{{post.timestamp |date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <center class="post-preview" ><h4>{{post.description}}</h4></center>
+      </div>
+    </div>
+    <div class="container mt-2">
+      <div class="row">
+      {% for p in photos %}
+        <div class="col mb-1 align-self-center">
+          <div class="card" style="width:150px">
+              <div class="caAuthor imagerd-header">
+                <img class="card-img-top" src="{{post.image}}" alt="Author image">
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+
+{%endblock content%}
