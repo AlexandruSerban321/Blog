@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post, PostImage
+from django.shortcuts import render
+from .models import Post
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count, Q
 from django.views.generic import DetailView
@@ -26,12 +26,6 @@ def index(request):
 
 class PostDetailView(DetailView):
     model = Post
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super(PostDetailView, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-        context['photos'] = PostImage.objects.all()
-        return context
 
 
 def about(request):

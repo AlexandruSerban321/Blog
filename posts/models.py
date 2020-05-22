@@ -28,7 +28,6 @@ class Post(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
-    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.title
@@ -37,11 +36,3 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={
             'pk': self.pk
         })
-
-
-class PostImage(models.Model):
-    post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='post_images/')
-
-    def __str__(self):
-        return self.post.title
