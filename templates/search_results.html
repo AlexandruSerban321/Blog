@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<header class="masthead" style="background-image: url('{%static 'img/search-bg.png'%)'">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Search Result</h1>
-            <span class="subheading">This is what matches your search.</span>
-          </div>
+<header class="masthead" style="background-image: url('../static/img/search-bg.png')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Search Result</h1>
+          <span class="subheading">This is what matches your search.</span>
         </div>
       </div>
     </div>
+  </div>
 </header>
 <div class="container">
     <div class="row">
@@ -24,7 +24,7 @@
             <div class="post col-xl-6 border mb-1">
               <div class="post-details">
                 <center>
-                <a href="#"><h3 class="h4">{{ post.title }}</h3></a>
+                <a href="{% url 'post-detail' post.id %}"><h3 class="h4">{{ post.title }}</h3></a>
                 <p class="text-muted">{{ post.description }}</p>
                 </center>
               </div>
