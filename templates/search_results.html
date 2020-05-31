@@ -21,11 +21,10 @@
           <div class="row">
             {% if queryset %}
             {% for post in queryset %}
-            <div class="post col-xl-6 border mb-1">
-              <div class="post-details">
+            <div class="post col-xl-6 mb-2">
+              <div class="post-details border">
                 <center>
                 <a href="{% url 'post-detail' post.id %}"><h3 class="h4">{{ post.title }}</h3></a>
-                <p class="text-muted">{{ post.description }}</p>
                 </center>
               </div>
             </div>
