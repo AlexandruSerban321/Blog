@@ -3,8 +3,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from posts.views import index, about, contact, browse, search, PostDetailView
+from .sitemaps import StaticViewsSitemap, PostsSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps = {
+    'static': StaticViewsSitemap,
+    'post': PostsSitemap
+}
 
 urlpatterns = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('', index, name='home'),
     path('post/<int:pk>/detail/', PostDetailView.as_view(), name='post-detail'),
     path('search/', search, name='search'),
@@ -14,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
