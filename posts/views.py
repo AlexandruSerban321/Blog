@@ -45,7 +45,7 @@ def get_category_count():
 def browse(request):
     category_count = get_category_count()
     posts = Post.objects.order_by("-timestamp")
-    paginator = Paginator(posts, 8)
+    paginator = Paginator(posts, 16)
     page = request.GET.get('page')
     try:
         post_list = paginator.page(page)
