@@ -18,7 +18,7 @@
         {% for cat in category_count %}
         <div class="item d-flex justify-content-between">
             <a class="ml-1"
-                href="{% url 'search' %}?q={{cat.categories__name}}">{{cat.categories__name}}-{{cat.categories__name__count}}</a>
+                href="{% url 'search' %}?q={{cat.categories__name}}">{{cat.categories__name}}</a><span class="mr-3">{{cat.categories__name__count}}</span>
         </div>
         {% endfor %}
     </div>
