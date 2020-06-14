@@ -15,11 +15,11 @@
         <header>
             <h3 class="h6 ml-1"><u>Categories</u></h3>
         </header>
+        {% for cat in category_count %}
         <div class="item d-flex justify-content-between">
-            {% for cat in category_count %}
-            <a class="ml-1" href="{% url 'search' %}?q={{cat.categories__name}}">{{cat.categories__name}}</a><span
-                class="mr-3">{{cat.categories__name__count}}</span>
-            {% endfor %}
+            <a class="ml-1"
+                href="{% url 'search' %}?q={{cat.categories__name}}">{{cat.categories__name}}-{{cat.categories__name__count}}</a>
         </div>
+        {% endfor %}
     </div>
 </aside>
