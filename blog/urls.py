@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
-from posts.views import index, about, contact, browse, search, PostDetailView
+from posts.views import index, about, contact, browse, search, PostDetailView, error_404
 from .sitemaps import StaticViewsSitemap, PostsSitemap
 from django.contrib.sitemaps.views import sitemap
 
@@ -21,6 +21,7 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('admin/', admin.site.urls),
 ]
+handler404 = error_404
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)

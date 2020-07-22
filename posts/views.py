@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count, Q
@@ -79,3 +79,6 @@ def search(request):
         'category_count': category_count,
     }
     return render(request, 'search_results.html', context)
+
+def error_404(request, exception):
+    return redirect('home')
